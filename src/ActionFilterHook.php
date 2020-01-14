@@ -20,7 +20,9 @@ final class ActionFilterHook implements
     HasFilterHookInterface,
     HasActionHookInterface
 {
-    const VERSION = '1.0.0';
+    use \Qubus\Traits\SingletonTrait;
+
+    const VERSION = '1.0.1';
     /**
      *
      * @access protected
@@ -64,37 +66,6 @@ final class ActionFilterHook implements
      * @const int
      */
     protected const ARGUMENT_NEUTRAL = 1;
-
-    /**
-     * @access protected
-     * @var self The stored singleton instance
-     */
-    protected static $instance;
-
-    /**
-     * Reset the Container instance.
-     */
-    public static function resetInstance()
-    {
-        if (self::$instance) {
-            self::$instance = null;
-        }
-    }
-
-    /**
-     * Creates the original or retrieves the stored singleton instance
-     *
-     * @return self
-     */
-    public static function getInstance()
-    {
-        if (!static::$instance) {
-            static::$instance = (new \ReflectionClass(get_called_class()))
-                ->newInstanceWithoutConstructor();
-        }
-
-        return static::$instance;
-    }
 
     /**
      * Add a new action to the collection to be registered with Qubus CMS.
