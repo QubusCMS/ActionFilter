@@ -14,7 +14,7 @@
         "issues": "https://github.com/QubusCMS/ActionFilter/issues"
     },
     "require": {
-        "php": "^7.3"
+        "php": ">=7.3"
     },
     "autoload": {
         "psr-4": {
